@@ -6,7 +6,11 @@ from django.views.generic import FormView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.encoding import force_str
+
+try:
+    from django.utils.encoding import force_str
+except ImportError:
+    from django.utils.encoding import smart_str
 
 from redactor.forms import ImageForm
 from redactor.utils import import_class, is_module_image_installed
